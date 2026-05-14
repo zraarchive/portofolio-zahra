@@ -1,0 +1,641 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Zahra</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:linear-gradient(to bottom,#fdf8f3,#f6f1eb);
+      color:#4b3f35;
+      overflow-x:hidden;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:8px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#c9a68a;
+      border-radius:20px;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      background:rgba(255,255,255,0.4);
+      backdrop-filter:blur(12px);
+      z-index:1000;
+      border-bottom:1px solid #eadfd4;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:700;
+      color:#9c7b63;
+      letter-spacing:1px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:#5e5046;
+      font-weight:500;
+      position:relative;
+      transition:0.3s;
+    }
+
+    nav ul li a::after{
+      content:'';
+      position:absolute;
+      width:0%;
+      height:2px;
+      background:#b08968;
+      left:0;
+      bottom:-5px;
+      transition:0.3s;
+      border-radius:10px;
+    }
+
+    nav ul li a:hover::after{
+      width:100%;
+    }
+
+    nav ul li a:hover{
+      color:#b08968;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 8% 60px;
+      gap:70px;
+      flex-wrap:wrap;
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:300px;
+      height:300px;
+      background:#f0d9c8;
+      border-radius:50%;
+      top:100px;
+      left:-100px;
+      opacity:0.4;
+      filter:blur(50px);
+    }
+
+    .hero img{
+      width:320px;
+      border-radius:30px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      animation:float 4s ease-in-out infinite;
+      transition:0.4s;
+      z-index:1;
+    }
+
+    .hero img:hover{
+      transform:scale(1.03);
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+      100%{
+        transform:translateY(0);
+      }
+    }
+
+    .hero-text{
+      max-width:580px;
+      z-index:1;
+    }
+
+    .hero-text h1{
+      font-size:62px;
+      color:#7f5539;
+      line-height:1.2;
+    }
+
+    .hero-text span{
+      color:#b08968;
+    }
+
+    .typing{
+      font-size:22px;
+      margin-top:10px;
+      color:#9c7b63;
+      height:30px;
+    }
+
+    .hero-text p{
+      line-height:1.9;
+      margin:20px 0 30px;
+      color:#6b5b50;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:#b08968;
+      color:white;
+      text-decoration:none;
+      border-radius:40px;
+      transition:0.3s;
+      box-shadow:0 8px 20px rgba(176,137,104,0.3);
+    }
+
+    .btn:hover{
+      background:#9c6644;
+      transform:translateY(-4px);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:60px 8%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .title h2{
+      font-size:40px;
+      color:#7f5539;
+      position:relative;
+      display:inline-block;
+      padding-bottom:12px;
+    }
+
+    .title h2::after{
+      content:'';
+      width:70%;
+      height:3px;
+      background:#d8b9a0;
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:0;
+      border-radius:10px;
+    }
+
+    /* ABOUT */
+
+    .about-box{
+      background:rgba(255,255,255,0.6);
+      backdrop-filter:blur(10px);
+      padding:30px;
+      border-radius:25px;
+      line-height:2;
+      box-shadow:0 5px 20px rgba(0,0,0,0.05);
+      transition:0.4s;
+    }
+
+    .about-box:hover{
+      transform:translateY(-6px);
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:15px;
+    }
+
+    .skill{
+      padding:13px 24px;
+      background:#ead7c3;
+      border-radius:40px;
+      transition:0.3s;
+      cursor:pointer;
+      font-weight:500;
+    }
+
+    .skill:hover{
+      transform:scale(1.08);
+      background:#cda88a;
+      color:white;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .portfolio-card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 5px 20px rgba(0,0,0,0.06);
+      transition:0.5s;
+      opacity:0;
+      transform:translateY(50px);
+      position:relative;
+    }
+
+    .portfolio-card.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .portfolio-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .portfolio-card img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .portfolio-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .portfolio-content{
+      padding:22px;
+    }
+
+    .portfolio-content h3{
+      margin-bottom:10px;
+      color:#7f5539;
+    }
+
+    .portfolio-content p{
+      line-height:1.8;
+      font-size:14px;
+      color:#6b5b50;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      text-align:center;
+      line-height:2.5;
+      box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .contact-box p i{
+      color:#b08968;
+      margin-right:10px;
+    }
+
+    .socials{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+    }
+
+    .socials a{
+      width:50px;
+      height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#ead7c3;
+      border-radius:50%;
+      color:#7f5539;
+      font-size:20px;
+      transition:0.3s;
+      text-decoration:none;
+    }
+
+    .socials a:hover{
+      background:#b08968;
+      color:white;
+      transform:translateY(-5px);
+    }
+
+    footer{
+      text-align:center;
+      padding:25px;
+      color:#8a7a6d;
+      font-size:14px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        gap:18px;
+      }
+
+      .hero{
+        text-align:center;
+        padding-top:160px;
+      }
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      .hero img{
+        width:240px;
+      }
+
+      section{
+        padding:45px 7%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">Zahra</div>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <div class="hero">
+
+    <img src="images/foto.jpeg" alt="Profile">
+
+    <div class="hero-text">
+
+      <h1>Hi, I'm <span>Zahra</span></h1>
+
+      <div class="typing">
+        <span id="text"></span>
+      </div>
+
+      <p>
+        Mahasiswa Sistem Informasi yang tertarik di bidang social media, creative content, web design, dan marketing communication.
+      </p>
+
+      <a href="#portfolio" class="btn">
+        See My Portfolio
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="title">
+      <h2>About Me</h2>
+    </div>
+
+    <div class="about-box">
+
+      Halo! Saya Zahra, mahasiswa Sistem Informasi di Universitas Pamulang yang memiliki ketertarikan di bidang digital creative, content creation, media sosial, dan web design.
+
+      <br><br>
+
+      Saya senang mempelajari hal-hal baru serta mengembangkan ide kreatif melalui desain visual dan pembuatan konten digital.
+
+      <br><br>
+
+      Saya merupakan pribadi yang mudah beradaptasi, mampu bekerja sama dalam tim, dan memiliki semangat untuk terus belajar dan berkembang di dunia digital dan teknologi ✨
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="title">
+      <h2>Skills</h2>
+    </div>
+
+    <div class="skills">
+
+      <div class="skill">Canva</div>
+      <div class="skill">CapCut</div>
+      <div class="skill">Content Research</div>
+      <div class="skill">Trend Analysis</div>
+      <div class="skill">Creative Thinking</div>
+      <div class="skill">Teamwork</div>
+
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+
+  <section id="portfolio">
+
+    <div class="title">
+      <h2>Portfolio Projects</h2>
+    </div>
+
+    <div class="portfolio-container">
+
+      <div class="portfolio-card">
+
+        <img src="images/tiktok.png">
+
+        <div class="portfolio-content">
+
+          <h3>Social Media Content</h3>
+
+          <p>
+            Mendukung pengembangan konten digital melalui creative planning, trend research, dan produksi visual media sosial.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="portfolio-card">
+
+        <img src="images/konten2.png">
+
+        <div class="portfolio-content">
+
+          <h3>Creative Content Project</h3>
+
+          <p>
+            Menjadi bagian dari produksi konten sebagai talent untuk membangun komunikasi visual yang lebih engaging.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="portfolio-card">
+
+        <img src="images/meeting.jpeg">
+
+        <div class="portfolio-content">
+
+          <h3>Creative Planning</h3>
+
+          <p>
+            Membantu pengembangan ide konten sederhana untuk kebutuhan marketing communications.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="title">
+      <h2>Contact</h2>
+    </div>
+
+    <div class="contact-box">
+
+      <p><i class="fa-brands fa-instagram"></i> @_alzhra1</p>
+
+      <p><i class="fa-solid fa-envelope"></i> aulzhra10@gmail.com</p>
+
+      <p><i class="fa-brands fa-whatsapp"></i> 089673921265</p>
+
+      <div class="socials">
+
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Zahra Portfolio
+  </footer>
+
+  <script>
+
+    // TYPING ANIMATION
+
+    const text = "Creative Content & Web Designer";
+    let i = 0;
+
+    function typing(){
+
+      if(i < text.length){
+
+        document.getElementById("text").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,80);
+
+      }
+
+    }
+
+    typing();
+
+    // SCROLL ANIMATION
+
+    const cards = document.querySelectorAll('.portfolio-card');
+
+    window.addEventListener('scroll', () => {
+
+      cards.forEach(card => {
+
+        const cardTop = card.getBoundingClientRect().top;
+
+        if(cardTop < window.innerHeight - 100){
+
+          card.classList.add('show');
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
